@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pydantic
+requests
+pandas
+# vector db and embedding libraries are implementation-specific; add as needed
