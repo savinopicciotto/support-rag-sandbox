@@ -29,5 +29,4 @@ If the app is cold on free hosting, first load may take 20 to 40 seconds.
 - Hover or click shows the citation source
 - After adding one new doc, re-run shows improvement on a target question
 
-## Next steps
-Share a CSV or HTML export of help docs and macros. I will return a mini POC with a MAP (Mutual Action Plan).
+## Book a 15-min intro → https://calendly.com/savinop/intro
