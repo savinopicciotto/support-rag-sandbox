@@ -1,4 +1,5 @@
 # Support RAG Sandbox
+
 **Book 15 min:** https://calendly.com/savinop/intro
 
 Goal: answer 10 gold support questions with citations from the help center and macros.
@@ -8,10 +9,8 @@ Goal: answer 10 gold support questions with citations from the help center and m
 - Gold questions: 10/10 (target)
 
 ## Demo hub
-- Live demo: https://example-demo-link
-- 90-sec Loom: https://example-loom-link
-
-If the app is cold on free hosting, first load may take 20 to 40 seconds.
+**Live demo (GitHub Pages):** https://savinopicciotto.github.io/support-rag-sandbox/  
+**90-sec Loom:** <PASTE LOOM URL>
 
 ## How to run locally
 1. Python 3.11 recommended
