@@ -99,3 +99,6 @@ curl -X POST http://localhost:8000/ask \
 
 
 See [ACCEPTANCE_TESTS.md](./ACCEPTANCE_TESTS.md) for step-by-step checks.
+
+
+License: [MIT](./LICENSE)
