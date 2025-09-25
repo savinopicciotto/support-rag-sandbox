@@ -22,8 +22,40 @@ If the app is cold on free hosting, first load may take 20 to 40 seconds.
 6. Visit http://localhost:8000
 
 ## API
-- `POST /ask` – body: `{ "query": "How do I reset my password?" }`
-- returns: `{ "answer": "...", "citations": ["docs/123"] }`
+
+**POST** `/ask`
+
+#### Headers
+`Content-Type: application/json`
+
+#### Body
+~~~json
+{ "query": "how do I reset my password?" }
+~~~
+
+#### Response (200)
+~~~json
+{
+  "answer": "You can reset your password at ...",
+  "citations": ["https://help.example.com/account/password-reset"],
+  "sources": 3
+}
+~~~
+
+#### Errors (examples)
+~~~json
+{ "error": "missing field: query" }
+~~~
+~~~json
+{ "error": "upstream vector store unavailable" }
+~~~
+
+#### curl
+~~~bash
+curl -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"query":"how do I reset my password?"}'
+~~~
 
 ## Proof moments
 1. **Cited answer** - returns the policy with inline citations.
