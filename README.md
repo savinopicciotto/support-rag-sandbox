@@ -96,3 +96,6 @@ curl -X POST http://localhost:8000/ask \
 - **AT-5 Warranty**  
   Input: “item arrived defective”  
   Expect: warranty length + proof required + macro suggestion if relevant.
+
+
+See [ACCEPTANCE_TESTS.md](./ACCEPTANCE_TESTS.md) for step-by-step checks.
