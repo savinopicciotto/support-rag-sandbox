@@ -10,7 +10,7 @@ Goal: answer 10 gold support questions with citations from the help center and m
 
 ## Demo hub
 **Live demo (GitHub Pages):** https://savinopicciotto.github.io/support-rag-sandbox/  
-**90-sec Loom:** <PASTE LOOM URL>
+**90-sec Loom:** https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?sid=d08d3364-90ee-49bc-89fe-d045416af2e4
 
 ## How to run locally
 1. Python 3.11 recommended
