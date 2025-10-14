@@ -1,364 +1,317 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Support RAG Sandbox — 3 Proof Moments">
-<meta property="og:description" content="90-sec Loom + shareable live demo URL + MAP (acceptance tests).">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://savinopicciotto.github.io/support-rag-sandbox/">
-<meta property="og:image" content="https://savinopicciotto.github.io/support-rag-sandbox/social.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://savinopicciotto.github.io/support-rag-sandbox/">
+  <meta property="og:description" content="90-sec Loom + shareable live demo URL + MAP (acceptance tests).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://savinopicciotto.github.io/support-rag-sandbox/">
+  <meta property="og:image" content="https://savinopicciotto.github.io/support-rag-sandbox/social.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://savinopicciotto.github.io/support-rag-sandbox/">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Support RAG Sandbox — 3 Proof Moments</title>
+
   <style>
+    /* Base */
     body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
-    h1, h2, h3 { margin: 0.4rem 0; }
-.ctas { margin: 8px 0 12px; display: flex; gap: 12px; flex-wrap: wrap; }
-.ctas a { display: inline-block; }
-.muted { color: #666; font-size: 0.9rem; }
-h3 { margin: 0 0 8px; }
-.card { padding: 16px; border: 1px solid #e5e7eb; border-radius: 12px; margin: 12px 0; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
-.row  { display: flex; gap: 12px; flex-wrap: wrap; }
     .wrap { max-width: 980px; margin: 0 auto; }
-    .row { display: flex; gap: 16px; flex-wrap: wrap; }
-    .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); background: #fff; }
-    .card h3 { margin-top: 0; }
-    input[type="text"] { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #ccc; }
-    button { padding: 10px 14px; border-radius: 10px; border: 1px solid #222; background: #f7f7f7; cursor: pointer; }
-    button:hover { background: #eee; }
-    .muted { color: #666; font-size: 0.9rem; }
-    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid #999; font-size: 0.8rem; margin-left: 8px; }
-    .result { border-top: 1px dotted #ddd; padding-top: 8px; margin-top: 8px; }
-    .snippet { background: #fafafa; border: 1px dashed #ccc; padding: 10px; border-radius: 8px; white-space: pre-wrap; }
-    .flex { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    details { padding: 8px 0; }
-    .small { font-size: 0.9rem; }
-    .right { text-align: right; }
+    h1, h2, h3 { margin: .4rem 0; }
+    h3 { margin: 0 0 8px; }
+    .muted { color: #666; font-size: .9rem; }
+
+    /* Cards / layout */
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:16px; margin:12px 0; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+    .card h3 { margin-top:0; }
+    .row  { display:flex; gap:16px; flex-wrap:wrap; }
+    .flex { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+    /* Inputs / buttons */
+    input[type="text"] { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; }
+    button { padding:10px 14px; border-radius:10px; border:1px solid #222; background:#f7f7f7; cursor:pointer; }
+    button:hover { background:#eee; }
+
+    /* Badges / pills / small */
+    .badge { display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid #999; font-size:.8rem; margin-left:8px; }
     .pill { background:#f1f1f1; padding:4px 8px; border-radius:999px; margin-right:4px; display:inline-block; }
-    .footer { margin-top: 24px; font-size: 0.9rem; color: #666; }
-    .ok { color: #0a7f2e; font-weight: 600; }
-    .warn { color: #b35a00; font-weight: 600; }
-    .copy { margin-left: 8px; }
-    .logs { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; background: #f9fafb; border: 1px solid #e5e7eb; padding: 10px; border-radius: 8px; }
-    .banner { padding: 10px 14px; border-radius: 12px; background: #f5faff; border: 1px solid #cfe8ff; }
-    .card.video { padding: 0; overflow: hidden; }
-.video-wrap { position: relative; width: 100%; max-width: 980px; margin: 0 auto; aspect-ratio: 16/9; }
-.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .small { font-size:.9rem; }
+    .right { text-align:right; }
+
+    /* Results / logs */
+    .result { border-top:1px dotted #ddd; padding-top:8px; margin-top:8px; }
+    .snippet { background:#fafafa; border:1px dashed #ccc; padding:10px; border-radius:8px; white-space:pre-wrap; }
+    .logs { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; background:#f9fafb; border:1px solid #e5e7eb; padding:10px; border-radius:8px; }
+
+    /* Notices / footer */
+    .banner { padding:10px 14px; border-radius:12px; background:#f5faff; border:1px solid #cfe8ff; }
+    .ok { color:#0a7f2e; font-weight:600; }
+    .warn { color:#b35a00; font-weight:600; }
+    .copy { margin-left:8px; }
+    .footer { margin-top:24px; font-size:.9rem; color:#666; }
+
+    /* CTA row (matches Analytics page spacing) */
+    .ctas { margin:8px 0 12px; display:flex; gap:12px; flex-wrap:wrap; }
+    .ctas a { display:inline-block; }
+    /* Fallback in case flex-gap isn’t supported */
+    .ctas a + a { margin-left:12px; }
   </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Support RAG Sandbox — 3 Proof Moments <span class="pill">90 sec cut</span></h1>
-  <p class="muted">Goal: 20% faster replies using Help Center + Macros. Data: tiny sample set for demo.</p>
-<p style="margin:0 0 12px;">
-<div class="card" style="padding:12px;">
-    <!-- Actions (together, left-aligned) -->
- <p class="ctas">
-  <a href="https://stan.store/Savino/p/minipoc?utm_source=pages-rag&utm_medium=cta&utm_campaign=mini_poc" target="_blank" rel="noopener">Start mini POC · $499</a>
-  <a href="https://calendly.com/savinop/intro?utm_source=pages-rag&utm_medium=cta&utm_campaign=book" target="_blank" rel="noopener">Book 15-min intro</a>
-  <a href="https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?utm_source=pages-rag&utm_medium=cta&utm_campaign=watch_90s" target="_blank" rel="noopener">Watch 90-sec Loom</a>
-  <a href="https://github.com/savinopicciotto/support-rag-sandbox?utm_source=pages-rag&utm_medium=cta&utm_campaign=readme_repo" target="_blank" rel="noopener">README + Repo ↗</a>
-</p>
+  <div class="wrap">
+    <h1>Support RAG Sandbox — 3 Proof Moments <span class="pill">90 sec cut</span></h1>
+    <p class="muted">Goal: 20% faster replies using Help Center + Macros. Data: tiny sample set for demo.</p>
 
-<p class="muted">Deliverables (5–10 days): 90-sec Loom • shareable live demo URL • MAP (acceptance tests).</p>
-  <h3 style="margin:0 0 8px;">What this shows</h3>
-  <ol style="margin:0 12px 12px 20px;">
-    <li>Miss → fix: toggle a doc off, re-run, add it back, re-run.</li>
-    <li>Zendesk-ready reply with source citation.</li>
-    <li>Trace view: tokens, synonyms, and scoring.</li>
-  </ol>
+    <div class="card" style="padding:12px;">
+      <!-- Actions (together, left-aligned) -->
+      <p class="ctas">
+        <a href="https://stan.store/Savino/p/minipoc?utm_source=pages-rag&utm_medium=cta&utm_campaign=mini_poc" target="_blank" rel="noopener noreferrer">Start mini POC · $499</a>
+        <a href="https://calendly.com/savinop/intro?utm_source=pages-rag&utm_medium=cta&utm_campaign=book" target="_blank" rel="noopener noreferrer">Book 15-min intro</a>
+        <a href="https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?utm_source=pages-rag&utm_medium=cta&utm_campaign=watch_90s" target="_blank" rel="noopener noreferrer">Watch 90-sec Loom</a>
+        <a href="https://github.com/savinopicciotto/support-rag-sandbox?utm_source=pages-rag&utm_medium=cta&utm_campaign=readme_repo" target="_blank" rel="noopener noreferrer">README + Repo ↗</a>
+      </p>
 
-  <h3 style="margin:12px 0 8px;">How to try it</h3>
-  <ul style="margin:0 12px 8px 18px;">
-    <li>Click Test 1/2/3 or type a query like <em>change address</em>.</li>
-    <li>Use the <strong>Simulate a miss and fix</strong> toggle to prove relevance.</li>
-    <li>Click <strong>Copy</strong> on the reply block.</li>
-  </ul>
-</div>
-  <div class="card">
-    <h3>Search</h3>
-    <div class="row">
-      <div style="flex: 1 1 480px;">
-        <input id="q" type="text" placeholder="Try: cancel auto-ship" />
-      </div>
-      <div class="flex">
-        <button onclick="runSearch()">Search</button>
-        <button onclick="setQuery('cancel auto-ship')">Test 1</button>
-        <button onclick="setQuery('change address')">Test 2</button>
-        <button onclick="setQuery('refund policy window')">Test 3</button>
-      </div>
+      <p class="muted">Deliverables (5–10 days): 90-sec Loom • shareable live demo URL • MAP (acceptance tests).</p>
+
+      <h3>What this shows</h3>
+      <ol style="margin:0 12px 12px 20px;">
+        <li>Miss → fix: toggle a doc off, re-run, add it back, re-run.</li>
+        <li>Zendesk-ready reply with source citation.</li>
+        <li>Trace view: tokens, synonyms, and scoring.</li>
+      </ol>
+
+      <h3 style="margin:12px 0 8px;">How to try it</h3>
+      <ul style="margin:0 12px 8px 18px;">
+        <li>Click Test 1/2/3 or type a query like <em>change address</em>.</li>
+        <li>Use the <strong>Simulate a miss and fix</strong> toggle to prove relevance.</li>
+        <li>Click <strong>Copy</strong> on the reply block.</li>
+      </ul>
     </div>
 
-    <details style="margin-top:10px;">
-      <summary>Simulate a miss and fix</summary>
-      <div class="banner small">
-        <p><strong>Demo flow:</strong> Uncheck the Address Updates doc to simulate a miss for "change address". Then click <em>Add KB-102 back</em> and re-run.</p>
+    <div class="card">
+      <h3>Search</h3>
+      <div class="row">
+        <div style="flex:1 1 480px;">
+          <input id="q" type="text" placeholder="Try: cancel auto-ship" />
+        </div>
         <div class="flex">
-          <label><input type="checkbox" id="excludeKB102" checked onchange="toggleKB102()"> Exclude KB-102 Address Updates</label>
-          <button onclick="addKB102()">Add KB-102 back</button>
+          <button onclick="runSearch()">Search</button>
+          <button onclick="setQuery('cancel auto-ship')">Test 1</button>
+          <button onclick="setQuery('change address')">Test 2</button>
+          <button onclick="setQuery('refund policy window')">Test 3</button>
         </div>
       </div>
-    </details>
 
-    <div id="results"></div>
-  </div>
+      <details style="margin-top:10px;">
+        <summary>Simulate a miss and fix</summary>
+        <div class="banner small">
+          <p><strong>Demo flow:</strong> Uncheck the Address Updates doc to simulate a miss for "change address". Then click <em>Add KB-102 back</em> and re-run.</p>
+          <div class="flex">
+            <label><input type="checkbox" id="excludeKB102" checked onchange="toggleKB102()"> Exclude KB-102 Address Updates</label>
+            <button onclick="addKB102()">Add KB-102 back</button>
+          </div>
+        </div>
+      </details>
 
-  <div class="row" style="margin-top: 16px;">
-    <div class="card" style="flex: 1 1 520px;">
-      <h3>Zendesk-ready reply</h3>
-      <div id="zdSnippet" class="snippet small">Run a search to generate a reply.</div>
-      <div class="right">
-        <button class="copy" onclick="copySnippet()">Copy</button>
+      <div id="results"></div>
+    </div>
+
+    <div class="row" style="margin-top:16px;">
+      <div class="card" style="flex:1 1 520px;">
+        <h3>Zendesk-ready reply</h3>
+        <div id="zdSnippet" class="snippet small">Run a search to generate a reply.</div>
+        <div class="right">
+          <button class="copy" onclick="copySnippet()">Copy</button>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1 1 420px;">
+        <h3>Logs / Trace</h3>
+        <div id="logs" class="logs">Run a search to see tokenization, synonyms, and scoring.</div>
       </div>
     </div>
 
-    <div class="card" style="flex: 1 1 420px;">
-      <h3>Logs / Trace</h3>
-      <div id="logs" class="logs">Run a search to see tokenization, synonyms, and scoring.</div>
+    <div class="footer">
+      <span class="pill">Stack: vanilla JS</span>
+      <span class="pill">Synonym match</span>
+      <span class="pill">Citations</span>
+      <span class="pill">Trace + Fix</span>
+      <span class="pill">Reply handoff</span>
     </div>
   </div>
 
-  <div class="footer">
-    <span class="pill">Stack: vanilla JS</span>
-    <span class="pill">Synonym match</span>
-    <span class="pill">Citations</span>
-    <span class="pill">Trace + Fix</span>
-    <span class="pill">Reply handoff</span>
-  </div>
-</div>
-
-<script>
-// ---------- Sample KB docs ----------
-const baseDocs = [
-  {
-    id: "KB-101",
-    title: "Subscription Management",
-    date: "2025-05-05",
-    content: `You can cancel a subscription at any time from your account page.
+  <script>
+  // ---------- Sample KB docs ----------
+  const baseDocs = [
+    { id:"KB-101", title:"Subscription Management", date:"2025-05-05",
+      content:`You can cancel a subscription at any time from your account page.
 If you enrolled in auto-ship, this is the same as a subscription.
 To cancel, open Account → Subscriptions → Cancel. Cancellations take effect before the next renewal date.
-If you need help, contact support with your order number.`
-  },
-  {
-    id: "KB-102",
-    title: "Address Updates",
-    date: "2024-11-01",
-    content: `To change your shipping address, go to Account → Addresses.
+If you need help, contact support with your order number.` },
+    { id:"KB-102", title:"Address Updates", date:"2024-11-01",
+      content:`To change your shipping address, go to Account → Addresses.
 Updates must be made before 11:59 PM the day before your order ships.
-After that time, we cannot reroute packages.`
-  },
-  {
-    id: "KB-103",
-    title: "Refunds and Returns",
-    date: "2025-02-10",
-    content: `We offer a 30-day refund window from the delivery date.
+After that time, we cannot reroute packages.` },
+    { id:"KB-103", title:"Refunds and Returns", date:"2025-02-10",
+      content:`We offer a 30-day refund window from the delivery date.
 Items must be unopened and in original packaging.
-Perishables and final sale items are not eligible for refund.`
-  },
-  {
-    id: "KB-104",
-    title: "Shipping Times",
-    date: "2025-01-20",
-    content: `Standard shipping takes 3–5 business days.
-Expedited shipping is 1–2 business days if placed before 2 PM ET.`
-  },
-  {
-    id: "KB-105",
-    title: "Payment Methods",
-    date: "2025-03-15",
-    content: `We accept Visa, Mastercard, Amex, and PayPal.
-Apple Pay and Google Pay are supported in the mobile app.`
+Perishables and final sale items are not eligible for refund.` },
+    { id:"KB-104", title:"Shipping Times", date:"2025-01-20",
+      content:`Standard shipping takes 3–5 business days.
+Expedited shipping is 1–2 business days if placed before 2 PM ET.` },
+    { id:"KB-105", title:"Payment Methods", date:"2025-03-15",
+      content:`We accept Visa, Mastercard, Amex, and PayPal.
+Apple Pay and Google Pay are supported in the mobile app.` }
+  ];
+
+  // Synonym normalization map
+  const synonyms = {
+    "auto-ship":"subscription","autoship":"subscription","auto":"subscription","sub":"subscription",
+    "addr":"address","refunds":"refund","returns":"refund"
+  };
+
+  let excluded = new Set(["KB-102"]); // start excluded to simulate a miss
+
+  function toggleKB102() {
+    const checked = document.getElementById('excludeKB102').checked;
+    if (checked) excluded.add("KB-102"); else excluded.delete("KB-102");
   }
-];
-
-// Synonym normalization map
-const synonyms = {
-  "auto-ship": "subscription",
-  "autoship": "subscription",
-  "auto": "subscription",
-  "sub": "subscription",
-  "addr": "address",
-  "refunds": "refund",
-  "returns": "refund"
-};
-
-let excluded = new Set(["KB-102"]); // start excluded to simulate a miss
-
-function toggleKB102() {
-  const checked = document.getElementById('excludeKB102').checked;
-  if (checked) excluded.add("KB-102"); else excluded.delete("KB-102");
-}
-
-function addKB102() {
-  excluded.delete("KB-102");
-  const cb = document.getElementById('excludeKB102');
-  cb.checked = false;
-  runSearch();
-}
-
-function tokenize(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s\-]/g, " ")
-    .split(/\s+/)
-    .filter(Boolean);
-}
-
-function normalizeTokens(tokens) {
-  return tokens.map(t => synonyms[t] || t);
-}
-
-function buildIndex(docs) {
-  const N = docs.length;
-  const df = {};
-  const tf = {}; // {docId: {term: count}}
-  for (const d of docs) {
-    const terms = new Set();
-    const toks = tokenize(d.content + " " + d.title);
-    for (const t of toks) {
-      const term = synonyms[t] || t;
-      if (!tf[d.id]) tf[d.id] = {};
-      tf[d.id][term] = (tf[d.id][term] || 0) + 1;
-      terms.add(term);
-    }
-    for (const term of terms) {
-      df[term] = (df[term] || 0) + 1;
-    }
+  function addKB102() {
+    excluded.delete("KB-102");
+    const cb = document.getElementById('excludeKB102');
+    cb.checked = false;
+    runSearch();
   }
-  const idf = {};
-  for (const term in df) {
-    idf[term] = Math.log((N + 1) / (df[term] + 1)) + 1; // smoothed idf
-  }
-  return { tf, idf, N };
-}
 
-function scoreDocs(query, docs, index) {
-  const qTokensRaw = tokenize(query);
-  const qTokens = normalizeTokens(qTokensRaw);
-  const qSet = new Set(qTokens);
-  const scores = [];
-  for (const d of docs) {
-    let score = 0;
-    let hits = [];
-    if (excluded.has(d.id)) { continue; }
-    for (const qt of qSet) {
-      const tf = (index.tf[d.id] && index.tf[d.id][qt]) ? index.tf[d.id][qt] : 0;
-      const idf = index.idf[qt] || 0;
-      if (tf > 0) {
-        score += tf * idf;
-        hits.push(qt);
+  function tokenize(text) {
+    return text.toLowerCase().replace(/[^a-z0-9\s\-]/g," ").split(/\s+/).filter(Boolean);
+  }
+  function normalizeTokens(tokens) {
+    return tokens.map(t => synonyms[t] || t);
+  }
+
+  function buildIndex(docs) {
+    const N = docs.length, df = {}, tf = {};
+    for (const d of docs) {
+      const terms = new Set();
+      const toks = tokenize(d.content + " " + d.title);
+      for (const t of toks) {
+        const term = synonyms[t] || t;
+        if (!tf[d.id]) tf[d.id] = {};
+        tf[d.id][term] = (tf[d.id][term] || 0) + 1;
+        terms.add(term);
       }
+      for (const term of terms) df[term] = (df[term] || 0) + 1;
     }
-    // small phrase bonus if query words appear near each other
-    const contentLower = (d.content || "").toLowerCase();
-    if (qTokens.length >= 2) {
-      const phrase = qTokens.join(" ");
-      if (contentLower.includes(phrase)) score += 0.5;
+    const idf = {};
+    for (const term in df) idf[term] = Math.log((N + 1) / (df[term] + 1)) + 1; // smoothed idf
+    return { tf, idf, N };
+  }
+
+  function scoreDocs(query, docs, index) {
+    const qTokensRaw = tokenize(query);
+    const qTokens = normalizeTokens(qTokensRaw);
+    const qSet = new Set(qTokens);
+    const scores = [];
+    for (const d of docs) {
+      if (excluded.has(d.id)) continue;
+      let score = 0, hits = [];
+      for (const qt of qSet) {
+        const tfv = (index.tf[d.id] && index.tf[d.id][qt]) ? index.tf[d.id][qt] : 0;
+        const idf = index.idf[qt] || 0;
+        if (tfv > 0) { score += tfv * idf; hits.push(qt); }
+      }
+      // tiny phrase bonus
+      if (qTokens.length >= 2) {
+        const contentLower = (d.content || "").toLowerCase();
+        const phrase = qTokens.join(" ");
+        if (contentLower.includes(phrase)) score += 0.5;
+      }
+      if (score > 0) scores.push({ doc:d, score, hits });
     }
-    if (score > 0) {
-      scores.push({ doc: d, score, hits });
+    scores.sort((a,b) => b.score - a.score);
+    return { qTokensRaw, qTokens, scores };
+  }
+
+  function highlightSnippet(doc, hits) {
+    const text = doc.content;
+    const lower = text.toLowerCase();
+    let pos = -1;
+    for (const h of hits) {
+      const p = lower.indexOf(h);
+      if (p !== -1) { pos = p; break; }
     }
+    if (pos === -1) pos = 0;
+    const start = Math.max(0, pos - 80);
+    const end = Math.min(text.length, pos + 120);
+    let snippet = text.slice(start, end);
+    for (const h of hits) {
+      const re = new RegExp("(" + h.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ")", "ig");
+      snippet = snippet.replace(re, "[$1]");
+    }
+    return snippet;
   }
-  scores.sort((a, b) => b.score - a.score);
-  return { qTokensRaw, qTokens, scores };
-}
 
-function highlightSnippet(doc, hits) {
-  const text = doc.content;
-  const lower = text.toLowerCase();
-  let pos = -1;
-  for (const h of hits) {
-    const p = lower.indexOf(h);
-    if (p !== -1) { pos = p; break; }
+  function setQuery(q) {
+    document.getElementById('q').value = q;
+    runSearch();
   }
-  if (pos === -1) pos = 0;
-  const start = Math.max(0, pos - 80);
-  const end = Math.min(text.length, pos + 120);
-  let snippet = text.slice(start, end);
-  for (const h of hits) {
-    const re = new RegExp("(" + h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ")", "ig");
-    snippet = snippet.replace(re, "[$1]");
+
+  function copySnippet() {
+    const text = document.getElementById('zdSnippet').innerText;
+    navigator.clipboard.writeText(text).then(() => alert("Copied reply to clipboard."));
   }
-  return snippet;
-}
 
-function setQuery(q) {
-  document.getElementById('q').value = q;
-  runSearch();
-}
+  function runSearch() {
+    const q = document.getElementById('q').value.trim();
+    const docs = [...baseDocs];
+    const index = buildIndex(docs);
+    const { qTokensRaw, qTokens, scores } = scoreDocs(q, docs, index);
 
-function copySnippet() {
-  const text = document.getElementById('zdSnippet').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Copied reply to clipboard.");
+    const out = document.getElementById('results');
+    out.innerHTML = "";
+    if (!q) { out.innerHTML = "<p class='muted'>Enter a query to see results.</p>"; return; }
+
+    if (scores.length === 0) {
+      out.innerHTML = "<p class='warn'>No matches in the current index. Consider adding a KB article.</p>";
+      document.getElementById('zdSnippet').innerText = "No answer found. Escalate to human and capture missing KB.";
+    } else {
+      scores.slice(0,3).forEach((s,i) => {
+        const div = document.createElement('div');
+        div.className = "result";
+        div.innerHTML = `
+          <div><strong>${i===0 ? "Top result: " : "Result: "}${s.doc.title}</strong>
+            <span class="muted">(${s.doc.id} • updated ${s.doc.date})</span>
+          </div>
+          <div class="small">${s.hits.length ? "Matched: " + s.hits.map(h=>"<span class='pill'>"+h+"</span>").join(" ") : ""}</div>
+          <div class="snippet">${highlightSnippet(s.doc, s.hits)}</div>
+        `;
+        out.appendChild(div);
+      });
+
+      const top = scores[0];
+      const reply = `Hi there,\n\nThanks for reaching out. Here is the current policy:\n\n${highlightSnippet(top.doc, top.hits)}\n\nSource: ${top.doc.title} (updated ${top.doc.date}).\n\nIf you need me to take action, reply YES and I will help from here.\n\nBest,\nSupport Team`;
+      document.getElementById('zdSnippet').innerText = reply;
+    }
+
+    const logs = document.getElementById('logs');
+    const tok = qTokensRaw.join(" ");
+    const norm = qTokens.join(" ");
+    const excl = excluded.size ? Array.from(excluded).join(", ") : "None";
+    logs.innerHTML = [
+      `Query tokens: ${tok}`,
+      `Normalized with synonyms: ${norm}`,
+      `Excluded docs: ${excl}`,
+      `IDF terms (sample): ${Object.entries(buildIndex(baseDocs).idf).slice(0,8).map(([k,v])=>k+":"+v.toFixed(2)).join(", ")}`,
+      scores.length ? `Top doc: ${scores[0].doc.id} score=${scores[0].score.toFixed(2)} hits=[${scores[0].hits.join(", ")}]` : `Top doc: None`
+    ].join("\n");
+  }
+
+  // Initialize a default query
+  window.addEventListener('DOMContentLoaded', () => {
+    runSearch();
   });
-}
-
-function runSearch() {
-  const q = document.getElementById('q').value.trim();
-  const docs = [...baseDocs];
-  const index = buildIndex(docs);
-  const { qTokensRaw, qTokens, scores } = scoreDocs(q, docs, index);
-
-  // Render results
-  const out = document.getElementById('results');
-  out.innerHTML = "";
-  if (!q) { out.innerHTML = "<p class='muted'>Enter a query to see results.</p>"; return; }
-  if (scores.length === 0) {
-    out.innerHTML = "<p class='warn'>No matches in the current index. Consider adding a KB article.</p>";
-    document.getElementById('zdSnippet').innerText = "No answer found. Escalate to human and capture missing KB.";
-  } else {
-    scores.slice(0, 3).forEach((s, i) => {
-      const div = document.createElement('div');
-      div.className = "result";
-      div.innerHTML = `
-        <div><strong>${i===0?"Top result: ":"Result: "}${s.doc.title}</strong> 
-          <span class="muted">(${s.doc.id} • updated ${s.doc.date})</span>
-        </div>
-        <div class="small">${s.hits.length ? "Matched: " + s.hits.map(h=>"<span class='pill'>"+h+"</span>").join(" ") : ""}</div>
-        <div class="snippet">${highlightSnippet(s.doc, s.hits)}</div>
-      `;
-      out.appendChild(div);
-    });
-
-    // Compose Zendesk snippet from top result
-    const top = scores[0];
-    const reply = `Hi there,\n\nThanks for reaching out. Here is the current policy:\n\n${highlightSnippet(top.doc, top.hits)}\n\nSource: ${top.doc.title} (updated ${top.doc.date}).\n\nIf you need me to take action, reply YES and I will help from here.\n\nBest,\nSupport Team`;
-    document.getElementById('zdSnippet').innerText = reply;
-  }
-
-  // Render logs
-  const logs = document.getElementById('logs');
-  const tok = qTokensRaw.join(" ");
-  const norm = qTokens.join(" ");
-  const excl = excluded.size ? Array.from(excluded).join(", ") : "None";
-  logs.innerHTML = [
-    `Query tokens: ${tok}`,
-    `Normalized with synonyms: ${norm}`,
-    `Excluded docs: ${excl}`,
-    `IDF terms (sample): ${Object.entries(buildIndex(baseDocs).idf).slice(0,8).map(([k,v])=>k+":"+v.toFixed(2)).join(", ")}`,
-    scores.length ? `Top doc: ${scores[0].doc.id} score=${scores[0].score.toFixed(2)} hits=[${scores[0].hits.join(", ")}]` : `Top doc: None`
-  ].join("\n");
-}
-
-// Initialize a default query
-window.addEventListener('DOMContentLoaded', () => {
-  runSearch();
-});
-</script>
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
